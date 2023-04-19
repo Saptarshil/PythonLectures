@@ -1,15 +1,18 @@
 import copy
 
-alist = [1, 2, 3, 4, [11, 21]]
-blist = copy.copy(alist)#This is shallow copy where a new object is created and the reference of the earlier object is stored here.
-alist[2] = 65
-#blist[0] = 100 #any changes made either in the existing list or a new list will be reflected in both.
-#blist.append(11) but addition of new elements will not be reflected in the other list.
-print(alist)
-print(blist)
-clist = [10, 20, 30]
-dlist = clist
-print(id(clist))
-print(id(dlist))
-dlist[2] = 100
-print(clist)
+list1 = [1, 2, 3, 4]
+list2 = copy.copy(list1)
+list2[1] = 100
+print("Shallow copy starts here")
+print(list1)
+print(list2)
+list1.append(75)
+print(list1)
+print(list2)
+print("Deep copy starts here") #instead of copying the reference, a new set of objects with their own reference is being created. So changes made in either of the object, will not affect the other one.
+list3 = [10, 20, 30, 60]
+list4 = copy.deepcopy(list3) #deep copy is costlier cause a new set of objects is being created.
+list3[2] = 890
+list4.append(100)
+print(list3)
+print(list4)
